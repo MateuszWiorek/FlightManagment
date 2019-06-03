@@ -42,6 +42,11 @@ public class PassengerServiceImpl implements PassengerService {
         return passengerRepository.count();
     }
 
+    @Override
+    public String getCurrentPassenger() {
+        return "admin";
+    }
+
 
     private boolean checkPassenger(Optional<Passenger> c, Integer id) {
         return id != null && c.isPresent();
