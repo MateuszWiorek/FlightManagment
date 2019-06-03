@@ -11,4 +11,6 @@ public class Flight {
     @GeneratedValue
     @Id
     private int flightId;
+    private String destination;
+    private String startingAirport;
 }

@@ -13,6 +13,7 @@ public class OrderFlight {
     @Id
     private int orderId;
     private int flightNumber;
+    private int PassengerNumber;
 
 
 }

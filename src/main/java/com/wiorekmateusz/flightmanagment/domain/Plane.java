@@ -15,6 +15,7 @@ public class Plane {
     @Id
     private int planeId;
     private int size;
+    private int reservedPlaces;
     private String name;
     @OneToMany(mappedBy="passengerId")
     List<Passenger> passengers;
