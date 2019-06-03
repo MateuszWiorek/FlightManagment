@@ -10,14 +10,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PlaneServiceImpl implements PlaneService {
     private final PlaneRepository planeRepository;
+
+
     @Override
     public List<Plane> getAll() {
-        return planeRepository.findAll();
+        List<Plane> planes = planeRepository.findAll();
+        planes.forEach((c) -> {
+            c.setPassengers(null);
+        });
+        return  planes;
     }
 
     @Override
     public Plane getById(Integer id) {
-        return planeRepository.findById(id).get();
+        Plane plane;
+        plane = planeRepository.findById(id).get();
+        plane.setPassengers(null);
+        return plane;
     }
 
     @Override
