@@ -1,6 +1,9 @@
 package com.wiorekmateusz.flightmanagment.configuration;
 
 import com.wiorekmateusz.flightmanagment.domain.Passenger;
+import com.wiorekmateusz.flightmanagment.domain.Plane;
+import com.wiorekmateusz.flightmanagment.service.FlightService;
+import com.wiorekmateusz.flightmanagment.service.PlaneService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +17,29 @@ import java.util.List;
 @RequestMapping("/")
 public class RestController {
     public final PassengerService passengerService;
-    @GetMapping("/home")
-    public String gethome(){
-        return "home";
-    }
+    public final PlaneService planeService;
+    public  final FlightService flightService;
 
     @GetMapping("/listPassengers")
     public List<Passenger> getPassengers(){
         return passengerService.getPassengersList();
     }
 
-    @GetMapping("getPassenger/{id}}")
-    public String getPassenger(@PathVariable int id){
-        return passengerService.getById(id).toString();
+    @GetMapping("/getPassenger/{id}")
+    public Passenger getPassenger(@PathVariable int id){
+        return passengerService.getById(id);
     }
+
+    @GetMapping("/listPlanes")
+    public List<Plane> getPlanes(){
+        return planeService.getAll();
+    }
+
+    @GetMapping("/getPlane/{id}")
+    public Plane getPlane(@PathVariable int id){
+        return planeService.getById(id);
+    }
+
+
 
 }
