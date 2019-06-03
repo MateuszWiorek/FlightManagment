@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("passengerRepository")
 public interface PassengerRepository extends JpaRepository<Passenger, Integer> {
-    Integer countPassengersByPlaneId(Integer id);
+    Integer countPassengersByPlane(Integer id);
 }
