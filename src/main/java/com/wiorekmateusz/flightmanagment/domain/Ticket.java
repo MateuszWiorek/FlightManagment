@@ -1,7 +1,6 @@
 package com.wiorekmateusz.flightmanagment.domain;
 
 import lombok.Data;
-import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 

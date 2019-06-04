@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class OrderFlight {
+public class OrderTicket {
     @GeneratedValue
     @Id
     private int orderId;
