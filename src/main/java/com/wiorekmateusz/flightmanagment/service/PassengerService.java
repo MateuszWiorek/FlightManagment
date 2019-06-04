@@ -10,4 +10,5 @@ public interface PassengerService {
      void deletePassenger(Integer id);
      long countPassengers();
      String getCurrentPassenger();
+     void addPassenger(Passenger passenger);
 }

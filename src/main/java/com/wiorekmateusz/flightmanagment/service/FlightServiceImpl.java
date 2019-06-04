@@ -25,7 +25,11 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Flight getFlightById(int id) {
-        return flightRepository.findById(id).get();
+        Optional<Flight> c =flightRepository.findById(id);
+        if(checkFlight(c, id)){
+            return  c.get();
+        }
+        return null;
     }
 
     @Override
@@ -41,6 +45,7 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public void makeReservation( Plane plane, int places) {
         if (plane.getReservedPlaces()<plane.getSize()-places){
+
 
         }
     }

@@ -5,7 +5,6 @@ import com.wiorekmateusz.flightmanagment.repository.PassengerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +37,10 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     public void deletePassenger(Integer id) {
+        Optional<Passenger> c = passengerRepository.findById(id);
+        if(checkPassenger(c, id)){
+            passengerRepository.deleteById(id);
+        }
 
     }
 
@@ -49,6 +52,11 @@ public class PassengerServiceImpl implements PassengerService {
     @Override
     public String getCurrentPassenger() {
         return "admin";
+    }
+
+    @Override
+    public void addPassenger(Passenger passenger) {
+        passengerRepository.saveAndFlush(passenger);
     }
 
 

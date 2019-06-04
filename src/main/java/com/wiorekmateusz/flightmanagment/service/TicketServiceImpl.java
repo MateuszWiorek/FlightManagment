@@ -12,9 +12,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TicketServiceImpl implements TicketService {
     TicketRepository ticketRepository;
+
     @Override
     public List<Ticket> getAll() {
+        System.out.println(ticketRepository.findAll().toString());
         return ticketRepository.findAll();
+
     }
 
     @Override
@@ -30,7 +33,6 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public void deleteTicket(int id) {
-        Ticket ticket;
         Optional<Ticket> c = ticketRepository.findById(id);
         if (checkTicket(c, id)){
             ticketRepository.deleteById(id);

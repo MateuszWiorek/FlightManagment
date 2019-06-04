@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service("planeService")
 @RequiredArgsConstructor
 public class PlaneServiceImpl implements PlaneService {
@@ -24,19 +26,31 @@ public class PlaneServiceImpl implements PlaneService {
     @Override
     public Plane getById(Integer id) {
         Plane plane;
-        plane = planeRepository.findById(id).get();
-        plane.setPassengers(null);
-        return plane;
+        Optional<Plane> c= planeRepository.findById(id);
+        if(checkPlane(c, id)) {
+            plane=c.get();
+            plane.setPassengers(null);
+            return plane;
+        }
+        return null;
     }
 
     @Override
     public void addNew(Plane plane) {
-        planeRepository.save(plane);
+        planeRepository.saveAndFlush(plane);
 
     }
 
     @Override
     public void deletePlane(Integer id) {
+    Plane plane;
+    Optional<Plane> c = planeRepository.findById(id);
+    if(checkPlane(c, id)){
+        planeRepository.deleteById(id);
+    }
 
+    }
+    private boolean checkPlane(Optional<Plane> c, Integer id) {
+        return id != null && c.isPresent();
     }
 }

@@ -30,7 +30,6 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public void deleteAirport(int id) {
-        Airport airport;
         Optional<Airport> c = airportRepository.findById(id);
         if(checkAirport(c, id)){
             airportRepository.deleteById(id);
