@@ -25,9 +25,13 @@ public class PassengerServiceImpl implements PassengerService {
     @Override
     public Passenger getById(Integer id) {
         Passenger passenger;
-        passenger= passengerRepository.findById(id).get();
-        passenger.setPlane(null);
-        return passenger;
+        Optional<Passenger> passengerOpt= passengerRepository.findById(id);
+        if(checkPassenger(passengerOpt, id)){
+            passenger=passengerOpt.get();
+            passenger.setPlane(null);
+            return passenger;
+        }
+        return null;
 
 
     }

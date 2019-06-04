@@ -8,13 +8,11 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class OrderFlight {
+public class Airport {
     @GeneratedValue
     @Id
-    private int orderId;
-    private int flightNumber;
-    private int PassengerNumber;
-    private int price;
-
+    private int id;
+    private String name;
+    private String location;
 
 }
